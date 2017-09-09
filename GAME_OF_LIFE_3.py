@@ -2,19 +2,20 @@ import pygame
 import random
 import time
 
-screen_width = 400
-screen_height = 400
+screen_width = 600
+screen_height = 600
 screen = pygame.display.set_mode((screen_width,screen_height))
 screen.fill([0,0,0])
 SquareGroup = pygame.sprite.LayeredUpdates()
+size = 10
 
 class Square(pygame.sprite.Sprite):
 	
-	def __init__(self, x, y, onEdge):
+	def __init__(self, x, y, onEdge, size):
 		
 		super().__init__()
 		
-		self.size = 40 #size of square
+		self.size = size #size of square
 		
 		self.image = pygame.Surface([self.size, self.size]) #surface for the square
 		self.rect = self.image.get_rect() #needed by pygame
@@ -40,30 +41,30 @@ class Square(pygame.sprite.Sprite):
 
 
 
-x = 20
-y = 20
+x = size / 2
+y = size / 2
 onEdge = False
 
-for col in range(10):
-	x = 20
-	for row in range(10):
+for col in range(59):
+	x = size / 2
+	for row in range(59):
 		
-		if x == 20 or x == 380:
+		if x == size / 2 or x == screen_width - size:
 			onEdge = True
 		
-		elif y == 20 or y == 380:
+		elif y == size / 2 or y == screen_height - size:
 			onEdge = True
 		
 		else:
 			onEdge = False
 		
-		square = Square(x, y, onEdge)
+		square = Square(x, y, onEdge, size)
 		SquareGroup.add(square)
 		
 		print("x", x)
-		x = x + 40
+		x = x + size
 	print("y", y)
-	y = y + 40
+	y = y + size
 	
 	
 	
