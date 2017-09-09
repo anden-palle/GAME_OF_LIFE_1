@@ -7,7 +7,7 @@ screen_height = 600
 screen = pygame.display.set_mode((screen_width,screen_height))
 screen.fill([0,0,0])
 SquareGroup = pygame.sprite.LayeredUpdates()
-size = 10
+size = 40
 
 class Square(pygame.sprite.Sprite):
 	
@@ -45,9 +45,9 @@ x = size / 2
 y = size / 2
 onEdge = False
 
-for col in range(59):
+for col in range(int(screen_width / size - 1)):
 	x = size / 2
-	for row in range(59):
+	for row in range(int(screen_height / size - 1)):
 		
 		if x == size / 2 or x == screen_width - size:
 			onEdge = True
